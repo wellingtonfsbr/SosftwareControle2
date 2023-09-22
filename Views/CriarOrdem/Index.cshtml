@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SoftwareControle.Models.CriarOrdem>
+
+
+@{
+    ViewData["Title"] = "Ordem";
+}
+
+
+<h2>Lista de Ordens</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ferramenta</th>
+            <th>Descrição</th>
+            <th>Data de Criação</th>
+            <th>Prazo Máximo</th>
+            <th>Nível de Urgência</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ordem in Model)
+        {
+            <tr>
+                <td>@ordem.CriarOrdemId</td>
+                <td>@ordem.FerramentaId</td>
+                <td>@ordem.Descricao</td>
+                <td>@ordem.DataCriacao.ToString("dd/MM/yyyy")</td>
+                <td>@ordem.PrazoMaximo.ToString("dd/MM/yyyy")</td>
+                <td>@ordem.NivelUrgencia</td>
+                <td>
+                    <a asp-action="Detalhes" asp-route-id="@ordem.CriarOrdemId">Detalhes</a> |
+                    <a asp-action="Editar" asp-route-id="@ordem.CriarOrdemId">Editar</a> |
+                    <a asp-action="Excluir" asp-route-id="@ordem.CriarOrdemId">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Adicionar">Adicionar nova ordem</a>

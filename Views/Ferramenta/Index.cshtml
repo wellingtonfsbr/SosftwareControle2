@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SoftwareControle.Models.Ferramenta>
+
+@{
+    ViewData["Title"] = "Ferramentas";
+}
+
+<h2>Ferramentas</h2>
+
+<a asp-controller="Ferramenta" asp-action="Adicionar" class="btn btn-primary mb-3">Adicionar Ferramenta</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th> <!-- Adicione esta coluna -->
+            <th>Descrição</th>
+            <th>Disponível</th>
+            <th>Imagem</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ferramenta in Model)
+        {
+            <tr>
+                <td>@ferramenta.FerramentaId</td>
+                <td>@ferramenta.Nome</td> <!-- Adicione esta coluna -->
+                <td>@ferramenta.Descricao</td>
+                <td>
+                    <input type="checkbox" disabled @(ferramenta.Disponivel ? "checked" : "") />
+                </td>
+                <td>
+                    @if (ferramenta.Imagem != null)
+                    {
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(ferramenta.Imagem)" alt="Imagem da Ferramenta" style="max-height: 100px; max-width: 100px;" />
+                    }
+                    else
+                    {
+                        <span>Sem imagem</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Alterar" asp-route-id="@ferramenta.FerramentaId">Alterar</a> |
+                    <a asp-action="Excluir" asp-route-id="@ferramenta.FerramentaId">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

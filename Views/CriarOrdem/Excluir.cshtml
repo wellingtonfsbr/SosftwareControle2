@@ -1,0 +1,23 @@
+﻿@model SoftwareControle.Models.CriarOrdem
+
+<h2>Excluir Ordem</h2>
+
+<p>Tem certeza de que deseja excluir esta ordem?</p>
+
+<!-- Detalhes da ordem a ser excluída -->
+<dl class="row">
+    <dt class="col-sm-2">ID</dt>
+    <dd class="col-sm-10">@Model.CriarOrdemId</dd>
+
+    <!-- Adicione mais detalhes da ordem aqui -->
+
+    <dt class="col-sm-2">Descrição</dt>
+    <dd class="col-sm-10">@Model.Descricao</dd>
+</dl>
+
+<!-- Formulário para confirmar a exclusão -->
+<form asp-action="Excluir" method="post">
+    <input type="hidden" asp-for="CriarOrdemId" />
+    <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

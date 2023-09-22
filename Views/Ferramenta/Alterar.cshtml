@@ -1,0 +1,22 @@
+﻿@model SoftwareControle.Models.Ferramenta
+
+@{
+    ViewData["Title"] = "Editar Ferramenta";
+}
+
+<h2>Editar Ferramenta</h2>
+
+<form asp-action="Alterar" enctype="multipart/form-data">
+    <input type="hidden" asp-for="FerramentaId" />
+
+    <div class="form-group">
+        <label for="Descricao">Descrição:</label>
+        <input type="text" class="form-control" id="Descricao" name="Descricao" asp-for="Descricao" required>
+    </div>
+   
+    <div class="form-group">
+        <label for="Imagem">Imagem:</label>
+        <input type="file" class="form-control-file" id="Imagem" name="Imagem">
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+</form>

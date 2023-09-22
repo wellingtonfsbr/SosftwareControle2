@@ -1,0 +1,16 @@
+﻿@model SoftwareControle.Models.Ferramenta
+
+@{
+    ViewData["Title"] = "Excluir Ferramenta";
+}
+
+<h2>Excluir Ferramenta</h2>
+
+<p>Tem certeza de que deseja excluir esta ferramenta?</p>
+
+<form asp-action="Excluir" method="post">
+    <input type="hidden" asp-for="FerramentaId" />
+    <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+</form>
+
+<a asp-action="Index">Cancelar e voltar para a lista</a>
